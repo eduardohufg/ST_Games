@@ -25,6 +25,7 @@ ghosts = [
     [vector(100, 160), vector(0, -5)],
     [vector(100, -160), vector(-5, 0)],
 ]
+
 # fmt: off
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -153,8 +154,10 @@ def move():
     for point, course in ghosts:
         if abs(pacman - point) < 20:
             return
-
-    ontimer(move, 100)
+        
+# Incremento de velocidad para los fantasmas de un 80%
+# Se muestra la animacion mas fluida
+    ontimer(move, 20)
 
 
 def change(x, y):
