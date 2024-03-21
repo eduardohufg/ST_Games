@@ -52,6 +52,18 @@ def move():
 
     for body in snake:
         square(body.x, body.y, 9, 'black')
+        if(randrange(0,500) > 490):
+            if(food.x > 190 or food.x < -200 or food.y > 190 or food.y < -200):
+                pass
+            else:
+                food.x = food.x + 10
+                food.y = food.y + 10
+        if(randrange(0,500) <10):
+            if(food.x > 190 or food.x < -200 or food.y > 190 or food.y < -200):
+                pass
+            else:
+                food.x = food.x - 10
+                food.y -= 10;
 
     square(food.x, food.y, 9, 'green')
     update()
