@@ -44,9 +44,22 @@ def move():
     clear()
 
     for body in snake:
-        # Seleccionar un color aleatorio de la lista
+
         color_index = randrange(len(colors))
         square(body.x, body.y, 9, colors[color_index])
+
+        if(randrange(0,500) > 490):
+            if(food.x > 190 or food.x < -200 or food.y > 190 or food.y < -200):
+                pass
+            else:
+                food.x = food.x + 10
+                food.y = food.y + 10
+        if(randrange(0,500) <10):
+            if(food.x > 190 or food.x < -200 or food.y > 190 or food.y < -200):
+                pass
+            else:
+                food.x = food.x - 10
+                food.y -= 10
 
     # Seleccionar un color aleatorio para la comida
     food_color = colors[randrange(len(colors))]
