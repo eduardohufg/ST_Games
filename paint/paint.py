@@ -38,7 +38,14 @@ def square(start, end):
 
 def circle(start, end):
     """Draw circle from start to end."""
-    pass  # TODO
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+    for count in range(90):
+        forward((end.x - start.y)/16)
+        left(4)
+    end_fill()
 
 
 def rectangle(start, end):
@@ -69,7 +76,7 @@ def store(key, value):
     state[key] = value
 
 
-state = {'start': None, 'shape': line}
+state = {'start': None, 'shape': circle}
 setup(420, 420, 370, 0)
 onscreenclick(tap)
 listen()
@@ -79,6 +86,7 @@ onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
 onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
+onkey(lambda: color('pink'), 'P')
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
 onkey(lambda: store('shape', circle), 'c')
