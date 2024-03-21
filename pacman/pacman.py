@@ -26,7 +26,7 @@ ghosts = [
     [vector(100, -160), vector(-5, 0)],
 ]
 
-e
+#Modificacion de tablero 
 
 # fmt: off
 # tiles = [
