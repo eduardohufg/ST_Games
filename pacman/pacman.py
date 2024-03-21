@@ -14,10 +14,17 @@ from turtle import *
 
 from freegames import floor, vector
 
+# Estado del juego, incluyendo la puntuación
 state = {'score': 0}
+
+# Turtle para dibujar el tablero y la puntuación
 path = Turtle(visible=False)
 writer = Turtle(visible=False)
+
+# Vector para la dirección de Pacman
 aim = vector(5, 0)
+
+# Posición inicial de Pacman y de los fantasmas
 pacman = vector(-40, -80)
 ghosts = [
     [vector(-180, 160), vector(5, 0)],
@@ -25,6 +32,13 @@ ghosts = [
     [vector(100, 160), vector(0, -5)],
     [vector(100, -160), vector(-5, 0)],
 ]
+
+# Modificacion de tablero 
+# Cada número representa un tipo de celda en el tablero
+# 0: Pared, 1: Punto, 2: Punto comido por Pacman
+# La cuadricula es 20x20
+# 0, 1, 2... se usan para determinar el contenido del tablero
+
 # fmt: off
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -48,6 +62,8 @@ tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ]
+
+
 # fmt: on
 
 
@@ -153,8 +169,10 @@ def move():
     for point, course in ghosts:
         if abs(pacman - point) < 20:
             return
-
-    ontimer(move, 100)
+        
+# Incremento de velocidad para los fantasmas de un 80%
+# Se muestra la animacion mas fluida
+    ontimer(move, 20)
 
 
 def change(x, y):
