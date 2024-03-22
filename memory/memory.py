@@ -77,6 +77,8 @@ def draw():
         color('black')
         write(tiles[mark],align= "center", font=('Arial', 30, 'normal'))
 
+        #merge
+
     update()
     ontimer(draw, 100)
 
