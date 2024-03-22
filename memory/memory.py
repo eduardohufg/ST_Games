@@ -77,6 +77,7 @@ def draw():
         goto(x + 25, y+10)
         color('black')
         write(tiles[mark],align= "center", font=('Arial', 30, 'normal'))
+        #prueba
 
     # Escribe el número de taps en la pantalla
     up()
