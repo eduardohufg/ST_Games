@@ -134,15 +134,23 @@ def move():
         if valid(point + course):
             point.move(course)
         else:
+            # Inicia con una distancia muy grande para comparar
+            min_distance = float('inf')
+            best_course = course
             options = [
                 vector(5, 0),
                 vector(-5, 0),
                 vector(0, 5),
                 vector(0, -5),
             ]
-            plan = choice(options)
-            course.x = plan.x
-            course.y = plan.y
+            for option in options:
+                new_point = point + option
+                if valid(new_point) and abs(pacman - new_point) < min_distance:
+                    min_distance = abs(pacman - new_point)
+                    best_course = option
+            
+            course.x = best_course.x
+            course.y = best_course.y
 
         up()
         goto(point.x + 10, point.y + 10)
