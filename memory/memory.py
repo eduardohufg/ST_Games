@@ -15,7 +15,8 @@ from turtle import *
 from freegames import path
 
 car = path('car.gif')
-tiles = list(range(32)) * 2
+from string import ascii_uppercase
+tiles = list(ascii_uppercase[:16]) * 4
 state = {'mark': None}
 hide = [True] * 64
 num_taps = 0
