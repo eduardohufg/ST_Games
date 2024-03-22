@@ -1,17 +1,10 @@
-"""Snake, classic arcade game.
-
-Exercises
-
-1. How do you make the snake faster or slower?
-2. How can you make the snake go around the edges?
-3. How would you move the food?
-4. Change the snake to respond to mouse clicks.
-"""
-
 from random import randrange
 from turtle import *
 
 from freegames import square, vector
+
+# Lista de colores diferentes (excepto el rojo)
+colors = ['green', 'blue', 'yellow', 'purple', 'orange']
 
 food = vector(0, 0)
 snake = [vector(10, 0)]
@@ -19,18 +12,18 @@ aim = vector(0, -10)
 
 
 def change(x, y):
-    """Change snake direction."""
+    """Cambiar la dirección de la serpiente."""
     aim.x = x
     aim.y = y
 
 
 def inside(head):
-    """Return True if head inside boundaries."""
+    """Devuelve True si la cabeza está dentro de los límites."""
     return -200 < head.x < 190 and -200 < head.y < 190
 
 
 def move():
-    """Move snake forward one segment."""
+    """Mover la serpiente un segmento hacia adelante."""
     head = snake[-1].copy()
     head.move(aim)
 
@@ -42,7 +35,7 @@ def move():
     snake.append(head)
 
     if head == food:
-        print('Snake:', len(snake))
+        print('Serpiente:', len(snake))
         food.x = randrange(-15, 15) * 10
         food.y = randrange(-15, 15) * 10
     else:
@@ -51,7 +44,10 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+
+        color_index = randrange(len(colors))
+        square(body.x, body.y, 9, colors[color_index])
+
         if(randrange(0,500) > 490):
             if(food.x > 190 or food.x < -200 or food.y > 190 or food.y < -200):
                 pass
@@ -63,9 +59,11 @@ def move():
                 pass
             else:
                 food.x = food.x - 10
-                food.y -= 10;
+                food.y -= 10
 
-    square(food.x, food.y, 9, 'green')
+    # Seleccionar un color aleatorio para la comida
+    food_color = colors[randrange(len(colors))]
+    square(food.x, food.y, 9, food_color)
     update()
     ontimer(move, 100)
 
